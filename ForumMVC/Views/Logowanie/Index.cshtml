@@ -1,0 +1,41 @@
+﻿@model ForumMVC.Models.UZYTKOWNIK
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/GuestLayout.cshtml";
+}
+
+<h2>Logowanie</h2>
+
+@using (Html.BeginForm("Index", "Logowanie", FormMethod.Post))
+{
+    <fieldset>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td>Login</td>
+                <td>@Html.TextBoxFor(a => a.UZ_login)</td>
+                <td>@Html.ValidationMessageFor(a => a.UZ_login)</td>
+            </tr>
+            <tr>
+                <td>Haslo</td>
+                <td>@Html.PasswordFor(a => a.UZ_haslo)</td>
+                <td>@Html.ValidationMessageFor(a => a.UZ_haslo)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}  

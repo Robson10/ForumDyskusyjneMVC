@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ForumMVC.Models.KATEGORIA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nowa Kategoria", "CreateCategory", "User")
+</p>
+<table class="table">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.KA_nazwa).ToString(), "SelectedCategory", new { id = item.KA_id, categoryName = item.KA_nazwa })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KA_opis)
+        </td>
+    </tr>
+}
+
+</table>

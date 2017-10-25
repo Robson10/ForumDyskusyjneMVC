@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ForumMVC.Models.KATEGORIA>
+
+@{
+    ViewBag.Title = "GuestIndex";
+    Layout = "~/Views/Shared/GuestLayout.cshtml";
+}
+
+<h2>Witaj na forum dyskusyjnym</h2>
+
+<table class="table">
+   @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(@Html.DisplayFor(modelItem => item.KA_nazwa).ToString(), "SelectedCategory",new { id = item.KA_id, categoryName = item.KA_nazwa })
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KA_opis)
+        </td>
+    </tr>
+}
+</table>

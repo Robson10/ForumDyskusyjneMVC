@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ForumMVC.Models.TematItem>
+@{
+    ViewBag.Title = "SelectedCategory";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2>
+    @if (Session["Kategoria"] != null)
+    {<text> @Session["Kategoria"].ToString() </text>}
+</h2>
+<p>
+    @Html.ActionLink("Nowy temat", "CreateTopic", "User")
+</p>
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(@Html.DisplayFor(modelItem => item.nazwa).ToString(), "SelectedTopic", new { id = item.id, topicName = item.nazwa })
+            </td>
+            <td>
+                ostatni post napisany - @Html.DisplayFor(modelItem => item.ostatnipost) przez @Html.DisplayFor(modelItem => item.czyjostatnipost)
+            </td>
+        </tr>
+    }
+</table>
