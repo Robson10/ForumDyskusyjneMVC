@@ -39,7 +39,6 @@ namespace ForumMVC
                     cmd.ExecuteNonQuery();
                 }
             }
-
         }
     }
 }
